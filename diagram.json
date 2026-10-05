@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "TI-237",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+
+    { "type": "wokwi-led", "id": "led1", "top": -140, "left": 90, "attrs": { "color": "red", "label": "LED1" } },
+    { "type": "wokwi-led", "id": "led2", "top": -140, "left": 140, "attrs": { "color": "green", "label": "LED2" } },
+    { "type": "wokwi-led", "id": "led3", "top": -140, "left": 190, "attrs": { "color": "yellow", "label": "LED3" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": -60, "left": 70, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": -60, "left": 120, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": -60, "left": 170, "rotate": 90, "attrs": { "value": "220" } },
+
+    { "type": "wokwi-pushbutton", "id": "btnToggle", "top": -150, "left": 300, "attrs": { "color": "red", "label": "LED1" } },
+    { "type": "wokwi-pushbutton", "id": "btnInc", "top": -150, "left": 390, "attrs": { "color": "green", "label": "+" } },
+    { "type": "wokwi-pushbutton", "id": "btnDec", "top": -150, "left": 480, "attrs": { "color": "blue", "label": "-" } },
+
+    { "type": "wokwi-potentiometer", "id": "pot", "top": 260, "left": 200, "attrs": {} }
+  ],
+  "connections": [
+    [ "uno:1", "$serialMonitor:RX", "", [] ],
+    [ "uno:0", "$serialMonitor:TX", "", [] ],
+
+    [ "uno:12", "r1:2", "red", [] ],
+    [ "r1:1", "led1:A", "red", [] ],
+    [ "led1:C", "uno:GND.1", "black", [] ],
+
+    [ "uno:11", "r2:2", "green", [] ],
+    [ "r2:1", "led2:A", "green", [] ],
+    [ "led2:C", "uno:GND.1", "black", [] ],
+
+    [ "uno:6", "r3:2", "gold", [] ],
+    [ "r3:1", "led3:A", "gold", [] ],
+    [ "led3:C", "uno:GND.1", "black", [] ],
+
+    [ "uno:2", "btnToggle:1.l", "orange", [] ],
+    [ "btnToggle:2.r", "uno:GND.1", "black", [] ],
+    [ "uno:3", "btnInc:1.l", "orange", [] ],
+    [ "btnInc:2.r", "uno:GND.1", "black", [] ],
+    [ "uno:4", "btnDec:1.l", "orange", [] ],
+    [ "btnDec:2.r", "uno:GND.1", "black", [] ],
+
+    [ "pot:VCC", "uno:5V", "red", [] ],
+    [ "pot:GND", "uno:GND.2", "black", [] ],
+    [ "pot:SIG", "uno:A0", "violet", [] ]
+  ],
+  "dependencies": {}
+}
